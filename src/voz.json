@@ -3,55 +3,61 @@
   "scenes": [
     {
       "id": "intro",
-      "durationInFrames": 152,
+      "durationInFrames": 369,
       "cues": [
         {
           "text": "¿Cómo piensa una inteligencia artificial cuando no está segura?",
           "file": "voz/e01-1.mp3",
           "from": 15,
-          "durationInFrames": 104
+          "durationInFrames": 103
+        },
+        {
+          "text": "Un trabajo de Eduar Ortiz, para la asignatura de Inteligencia Artificial, en la Fundación de Educación Superior Nueva América.",
+          "file": "voz/e01-2.mp3",
+          "from": 128,
+          "durationInFrames": 208
         }
       ]
     },
     {
       "id": "todas-partes",
-      "durationInFrames": 443,
+      "durationInFrames": 439,
       "cues": [
         {
           "text": "La incertidumbre está en todas partes.",
           "file": "voz/e02-1.mp3",
           "from": 15,
-          "durationInFrames": 65
+          "durationInFrames": 63
         },
         {
           "text": "El clima, el correo, un carro autónomo o un asistente de voz: ninguno sabe con certeza qué va a pasar.",
           "file": "voz/e02-2.mp3",
-          "from": 90,
-          "durationInFrames": 203
+          "from": 88,
+          "durationInFrames": 201
         },
         {
           "text": "Lo que hacen es calcular qué tan probable es cada opción.",
           "file": "voz/e02-3.mp3",
-          "from": 302,
-          "durationInFrames": 107
+          "from": 299,
+          "durationInFrames": 106
         }
       ]
     },
     {
       "id": "probabilidad",
-      "durationInFrames": 446,
+      "durationInFrames": 447,
       "cues": [
         {
           "text": "Para medir la incertidumbre usamos la probabilidad: un número entre cero, que es imposible, y uno, que es seguro.",
           "file": "voz/e03-1.mp3",
           "from": 15,
-          "durationInFrames": 213
+          "durationInFrames": 215
         },
         {
           "text": "Si el treinta por ciento de los correos es spam,",
           "file": "voz/e03-2.mp3",
-          "from": 238,
-          "durationInFrames": 80
+          "from": 240,
+          "durationInFrames": 78
         },
         {
           "text": "el setenta por ciento no lo es. Todo suma uno.",
@@ -63,67 +69,67 @@
     },
     {
       "id": "grandes-numeros",
-      "durationInFrames": 514,
+      "durationInFrames": 516,
       "cues": [
         {
           "text": "¿Y si no conocemos la probabilidad? Experimentamos.",
           "file": "voz/e04-1.mp3",
           "from": 15,
-          "durationInFrames": 95
+          "durationInFrames": 96
         },
         {
           "text": "Al lanzar una moneda mil veces, la proporción de caras se acerca a la mitad.",
           "file": "voz/e04-2.mp3",
-          "from": 120,
-          "durationInFrames": 135
+          "from": 121,
+          "durationInFrames": 137
         },
         {
           "text": "Con más datos, la estimación mejora. Por eso una inteligencia artificial entrenada con pocos datos se equivoca más.",
           "file": "voz/e04-3.mp3",
-          "from": 266,
+          "from": 268,
           "durationInFrames": 215
         }
       ]
     },
     {
       "id": "bayes",
-      "durationInFrames": 681,
+      "durationInFrames": 685,
       "cues": [
         {
           "text": "El teorema de Bayes nos dice cómo cambiar de opinión cuando llega una pista.",
           "file": "voz/e05-1.mp3",
           "from": 15,
-          "durationInFrames": 140
+          "durationInFrames": 144
         },
         {
           "text": "Antes de leer un correo, la probabilidad de que sea spam es del treinta por ciento.",
           "file": "voz/e05-2.mp3",
-          "from": 165,
-          "durationInFrames": 140
+          "from": 169,
+          "durationInFrames": 139
         },
         {
           "text": "Pero la palabra gratis aparece en el ochenta por ciento del spam.",
           "file": "voz/e05-3.mp3",
-          "from": 315,
-          "durationInFrames": 111
+          "from": 318,
+          "durationInFrames": 110
         },
         {
           "text": "Al verla, la probabilidad sube a setenta y siete coma cuatro por ciento.",
           "file": "voz/e05-4.mp3",
-          "from": 436,
-          "durationInFrames": 139
+          "from": 438,
+          "durationInFrames": 140
         },
         {
           "text": "Así lo calcula la fórmula de Bayes.",
           "file": "voz/e05-5.mp3",
-          "from": 585,
+          "from": 588,
           "durationInFrames": 63
         }
       ]
     },
     {
       "id": "orden",
-      "durationInFrames": 465,
+      "durationInFrames": 466,
       "cues": [
         {
           "text": "Cuidado con este error.",
@@ -141,85 +147,85 @@
           "text": "no significa que el ochenta por ciento de los correos con gratis sean spam: en realidad son el setenta y siete coma cuatro.",
           "file": "voz/e06-3.mp3",
           "from": 185,
-          "durationInFrames": 202
+          "durationInFrames": 204
         },
         {
           "text": "El orden importa.",
           "file": "voz/e06-4.mp3",
-          "from": 397,
-          "durationInFrames": 35
+          "from": 399,
+          "durationInFrames": 34
         }
       ]
     },
     {
       "id": "naive-bayes",
-      "durationInFrames": 586,
+      "durationInFrames": 585,
       "cues": [
         {
           "text": "Naive Bayes combina muchas pistas, una por una.",
           "file": "voz/e07-1.mp3",
           "from": 15,
-          "durationInFrames": 101
+          "durationInFrames": 100
         },
         {
           "text": "Para el mensaje gratis premio, multiplica la probabilidad de cada palabra en cada clase.",
           "file": "voz/e07-2.mp3",
-          "from": 126,
+          "from": 125,
           "durationInFrames": 176
         },
         {
           "text": "Gana el spam, con un noventa y siete coma seis por ciento.",
           "file": "voz/e07-3.mp3",
-          "from": 312,
+          "from": 311,
           "durationInFrames": 123
         },
         {
           "text": "Se llama ingenuo porque supone que las pistas no dependen entre sí.",
           "file": "voz/e07-4.mp3",
-          "from": 445,
-          "durationInFrames": 109
+          "from": 444,
+          "durationInFrames": 108
         }
       ]
     },
     {
       "id": "red-bayesiana",
-      "durationInFrames": 760,
+      "durationInFrames": 765,
       "cues": [
         {
           "text": "Una red bayesiana es un mapa de causas y efectos: la lluvia y el aspersor pueden mojar el pasto.",
           "file": "voz/e08-1.mp3",
           "from": 15,
-          "durationInFrames": 218
+          "durationInFrames": 220
         },
         {
           "text": "Sin pistas, creemos que llovió con un veinte por ciento.",
           "file": "voz/e08-2.mp3",
-          "from": 243,
-          "durationInFrames": 101
+          "from": 245,
+          "durationInFrames": 98
         },
         {
           "text": "Si vemos el pasto mojado, sube a cuarenta y cinco coma siete por ciento.",
           "file": "voz/e08-3.mp3",
-          "from": 354,
-          "durationInFrames": 135
+          "from": 353,
+          "durationInFrames": 133
         },
         {
           "text": "Pero si el aspersor estaba encendido, baja a veintitrés coma seis.",
           "file": "voz/e08-4.mp3",
-          "from": 499,
-          "durationInFrames": 122
+          "from": 496,
+          "durationInFrames": 128
         },
         {
           "text": "Otra explicación hace menos necesaria la lluvia.",
           "file": "voz/e08-5.mp3",
-          "from": 631,
-          "durationInFrames": 96
+          "from": 635,
+          "durationInFrames": 98
         }
       ]
     },
     {
       "id": "resumen",
-      "durationInFrames": 464,
+      "durationInFrames": 470,
       "cues": [
         {
           "text": "En resumen:",
@@ -231,37 +237,37 @@
           "text": "la probabilidad mide qué tan posible es algo;",
           "file": "voz/e09-2.mp3",
           "from": 51,
-          "durationInFrames": 91
+          "durationInFrames": 94
         },
         {
           "text": "Bayes actualiza lo que creemos al ver una pista;",
           "file": "voz/e09-3.mp3",
-          "from": 152,
-          "durationInFrames": 89
+          "from": 154,
+          "durationInFrames": 88
         },
         {
           "text": "Naive Bayes clasifica con varias pistas;",
           "file": "voz/e09-4.mp3",
-          "from": 251,
-          "durationInFrames": 78
+          "from": 253,
+          "durationInFrames": 83
         },
         {
           "text": "y una red bayesiana conecta causas y efectos.",
           "file": "voz/e09-5.mp3",
-          "from": 339,
+          "from": 345,
           "durationInFrames": 91
         }
       ]
     },
     {
       "id": "cierre",
-      "durationInFrames": 207,
+      "durationInFrames": 205,
       "cues": [
         {
           "text": "La inteligencia artificial no sabe: calcula qué es más probable.",
           "file": "voz/e10-1.mp3",
           "from": 15,
-          "durationInFrames": 126
+          "durationInFrames": 124
         }
       ]
     }

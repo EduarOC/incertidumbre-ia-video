@@ -2,7 +2,10 @@
   {
     "id": "intro",
     "minSeconds": 4,
-    "cues": ["¿Cómo piensa una inteligencia artificial cuando no está segura?"]
+    "cues": [
+      "¿Cómo piensa una inteligencia artificial cuando no está segura?",
+      "Un trabajo de Eduar Ortiz, para la asignatura de Inteligencia Artificial, en la Fundación de Educación Superior Nueva América."
+    ]
   },
   {
     "id": "todas-partes",

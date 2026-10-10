@@ -1,5 +1,7 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
+import datos from "../datos.json";
+import { useCue } from "../components/Cues";
 import { Scene } from "../components/Scene";
 import { useAppear, useRamp } from "../components/ui";
 import { colors, fonts } from "../theme";
@@ -64,6 +66,81 @@ const Pulse: React.FC<{ x: number; y: number; i: number }> = ({ x, y, i }) => {
   );
 };
 
+// Tarjeta de créditos: institución, estudiante y asignatura.
+const CreditRow: React.FC<{ delay: number; label: string; value: string }> = ({
+  delay,
+  label,
+  value,
+}) => {
+  const p = useAppear(delay);
+  return (
+    <div
+      style={{
+        opacity: p,
+        translate: `${(1 - p) * 60}px 0px`,
+        padding: "14px 0",
+      }}
+    >
+      <div
+        style={{
+          fontFamily: fonts.mono,
+          fontWeight: 500,
+          fontSize: 22,
+          letterSpacing: 2,
+          color: colors.muted,
+        }}
+      >
+        {label}
+      </div>
+      <div
+        style={{
+          fontFamily: fonts.body,
+          fontWeight: 800,
+          fontSize: 36,
+          lineHeight: 1.2,
+          color: colors.primary,
+          marginTop: 4,
+        }}
+      >
+        {value}
+      </div>
+    </div>
+  );
+};
+
+const Credits: React.FC = () => {
+  const { fps } = useVideoConfig();
+  const start = useCue(1);
+  const card = useAppear(start - 0.2 * fps);
+  return (
+    <div
+      style={{
+        marginTop: "auto",
+        width: 990,
+        padding: "18px 36px",
+        borderLeft: `8px solid ${colors.accent}`,
+        borderRadius: "0 24px 24px 0",
+        backgroundColor: colors.card,
+        boxShadow: `0 18px 40px rgba(20, 40, 60, ${0.1 * card})`,
+        opacity: card,
+        translate: `${(1 - card) * 60}px 0px`,
+      }}
+    >
+      <CreditRow delay={start} label="ESTUDIANTE" value={datos.estudiante} />
+      <CreditRow
+        delay={start + 0.9 * fps}
+        label="ASIGNATURA"
+        value={datos.asignatura}
+      />
+      <CreditRow
+        delay={start + 2 * fps}
+        label="INSTITUCIÓN EDUCATIVA"
+        value={datos.institucion}
+      />
+    </div>
+  );
+};
+
 export const Scene01Intro: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -113,6 +190,8 @@ export const Scene01Intro: React.FC = () => {
           </svg>
         </AbsoluteFill>
       }
-    />
+    >
+      <Credits />
+    </Scene>
   );
 };
