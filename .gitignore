@@ -1,0 +1,8 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Ignora los renders, salvo el video final que se versiona.
+out/*
+!out/incertidumbre-ia.mp4
