@@ -1,5 +1,6 @@
 import React from "react";
 import { useVideoConfig } from "remotion";
+import { useCue } from "../components/Cues";
 import { Scene } from "../components/Scene";
 import { LitCard, Takeaway } from "../components/ui";
 import { colors, fonts } from "../theme";
@@ -49,8 +50,10 @@ const Example: React.FC<{
 
 export const Scene02Everywhere: React.FC = () => {
   const { fps } = useVideoConfig();
-  const start = 0.8 * fps;
-  const step = 0.9 * fps;
+  // Las tarjetas se encienden mientras el narrador nombra cada ejemplo.
+  const start = useCue(1);
+  const step = 0.7 * fps;
+  const takeaway = useCue(2);
 
   return (
     <Scene
@@ -95,7 +98,7 @@ export const Scene02Everywhere: React.FC = () => {
       </div>
       <Takeaway
         text="No sabe con certeza: calcula qué tan probable es cada opción"
-        delay={5.2 * fps}
+        delay={takeaway}
         style={{ marginTop: 44 }}
       />
     </Scene>

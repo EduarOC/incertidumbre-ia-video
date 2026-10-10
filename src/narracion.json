@@ -1,0 +1,92 @@
+[
+  {
+    "id": "intro",
+    "minSeconds": 4,
+    "cues": ["¿Cómo piensa una inteligencia artificial cuando no está segura?"]
+  },
+  {
+    "id": "todas-partes",
+    "minSeconds": 8,
+    "cues": [
+      "La incertidumbre está en todas partes.",
+      "El clima, el correo, un carro autónomo o un asistente de voz: ninguno sabe con certeza qué va a pasar.",
+      "Lo que hacen es calcular qué tan probable es cada opción."
+    ]
+  },
+  {
+    "id": "probabilidad",
+    "minSeconds": 6,
+    "cues": [
+      "Para medir la incertidumbre usamos la probabilidad: un número entre cero, que es imposible, y uno, que es seguro.",
+      "Si el treinta por ciento de los correos es spam,",
+      "el setenta por ciento no lo es. Todo suma uno."
+    ]
+  },
+  {
+    "id": "grandes-numeros",
+    "minSeconds": 6,
+    "cues": [
+      "¿Y si no conocemos la probabilidad? Experimentamos.",
+      "Al lanzar una moneda mil veces, la proporción de caras se acerca a la mitad.",
+      "Con más datos, la estimación mejora. Por eso una inteligencia artificial entrenada con pocos datos se equivoca más."
+    ]
+  },
+  {
+    "id": "bayes",
+    "minSeconds": 6,
+    "cues": [
+      "El teorema de Bayes nos dice cómo cambiar de opinión cuando llega una pista.",
+      "Antes de leer un correo, la probabilidad de que sea spam es del treinta por ciento.",
+      "Pero la palabra gratis aparece en el ochenta por ciento del spam.",
+      "Al verla, la probabilidad sube a setenta y siete coma cuatro por ciento.",
+      "Así lo calcula la fórmula de Bayes."
+    ]
+  },
+  {
+    "id": "orden",
+    "minSeconds": 6,
+    "cues": [
+      "Cuidado con este error.",
+      "Que el ochenta por ciento del spam contenga la palabra gratis,",
+      "no significa que el ochenta por ciento de los correos con gratis sean spam: en realidad son el setenta y siete coma cuatro.",
+      "El orden importa."
+    ]
+  },
+  {
+    "id": "naive-bayes",
+    "minSeconds": 6,
+    "cues": [
+      "Naive Bayes combina muchas pistas, una por una.",
+      "Para el mensaje gratis premio, multiplica la probabilidad de cada palabra en cada clase.",
+      "Gana el spam, con un noventa y siete coma seis por ciento.",
+      "Se llama ingenuo porque supone que las pistas no dependen entre sí."
+    ]
+  },
+  {
+    "id": "red-bayesiana",
+    "minSeconds": 8,
+    "cues": [
+      "Una red bayesiana es un mapa de causas y efectos: la lluvia y el aspersor pueden mojar el pasto.",
+      "Sin pistas, creemos que llovió con un veinte por ciento.",
+      "Si vemos el pasto mojado, sube a cuarenta y cinco coma siete por ciento.",
+      "Pero si el aspersor estaba encendido, baja a veintitrés coma seis.",
+      "Otra explicación hace menos necesaria la lluvia."
+    ]
+  },
+  {
+    "id": "resumen",
+    "minSeconds": 6,
+    "cues": [
+      "En resumen:",
+      "la probabilidad mide qué tan posible es algo;",
+      "Bayes actualiza lo que creemos al ver una pista;",
+      "Naive Bayes clasifica con varias pistas;",
+      "y una red bayesiana conecta causas y efectos."
+    ]
+  },
+  {
+    "id": "cierre",
+    "minSeconds": 4,
+    "cues": ["La inteligencia artificial no sabe: calcula qué es más probable."]
+  }
+]

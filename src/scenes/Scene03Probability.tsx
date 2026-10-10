@@ -1,5 +1,6 @@
 import React from "react";
 import { spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { useCue } from "../components/Cues";
 import { Scene } from "../components/Scene";
 import { Middle, Pill, Takeaway, useAppear } from "../components/ui";
 import { colors, fonts } from "../theme";
@@ -12,13 +13,15 @@ export const Scene03Probability: React.FC = () => {
   const { fps } = useVideoConfig();
   const bar = useAppear(0.2 * fps);
   // El marcador viaja de 0 a 0,30 con rebote.
+  const travelStart = useCue(1);
   const travel = spring({
-    frame: frame - 1 * fps,
+    frame: frame - travelStart,
     fps,
     config: { damping: 9, stiffness: 90, mass: 0.9 },
   });
   const value = TARGET * travel;
-  const pill = useAppear(2.4 * fps, 14);
+  const pill = useAppear(travelStart + 1.2 * fps, 14);
+  const takeaway = useCue(2);
   const x = value * BAR_WIDTH;
 
   const tickLabel = (pos: number, top: string, bottom: string) => (
@@ -129,7 +132,7 @@ export const Scene03Probability: React.FC = () => {
       </Middle>
       <Takeaway
         text="Todo suma 1: si hay 30 % de spam, hay 70 % de no spam"
-        delay={3.6 * fps}
+        delay={takeaway}
       />
     </Scene>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
+import { useCue } from "../components/Cues";
 import { Scene } from "../components/Scene";
 import { Middle, Pill, useAppear, useRamp } from "../components/ui";
 import { colors, fmt, fonts } from "../theme";
@@ -50,18 +51,26 @@ export const Scene05Bayes: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const bar1 = useRamp(0.2 * fps, 0.9 * fps);
-  const pill = useAppear(1.1 * fps, 14);
-  const note = useAppear(1.5 * fps);
-  const arrow = useRamp(2.1 * fps, 2.9 * fps);
-  const bar2Visible = useAppear(2.4 * fps);
+  const prior = useCue(1);
+  const clue = useCue(2);
+  const update = useCue(3);
+  const bar1 = useRamp(prior, prior + 0.7 * fps);
+  const pill = useAppear(clue, 14);
+  const note = useAppear(clue + 0.4 * fps);
+  const arrow = useRamp(update, update + 0.8 * fps);
+  const bar2Visible = useAppear(update);
   // La segunda barra crece contando de 30,0 % a 77,4 %.
-  const bar2 = interpolate(frame, [2.6 * fps, 4 * fps], [0.3, 0.774], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: (t) => 1 - Math.pow(1 - t, 3),
-  });
-  const formula = useAppear(4.3 * fps);
+  const bar2 = interpolate(
+    frame,
+    [update + 0.5 * fps, update + 1.9 * fps],
+    [0.3, 0.774],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: (t) => 1 - Math.pow(1 - t, 3),
+    },
+  );
+  const formula = useAppear(useCue(4));
 
   const startX = BAR1_X + BAR_W / 2;
   const startY = PLOT_H - 0.3 * PLOT_H - 80;

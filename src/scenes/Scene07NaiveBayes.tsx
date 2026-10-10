@@ -1,5 +1,6 @@
 import React from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
+import { useCue } from "../components/Cues";
 import { Scene } from "../components/Scene";
 import { LitCard, Middle, Pill, Takeaway, useAppear } from "../components/ui";
 import { colors, fmt, fonts } from "../theme";
@@ -46,15 +47,23 @@ const Row: React.FC<{
 export const Scene07NaiveBayes: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const word1 = useAppear(0.7 * fps, 14);
-  const word2 = useAppear(1 * fps, 14);
-  const barIn = useAppear(2.6 * fps);
-  const fill = interpolate(frame, [2.8 * fps, 3.9 * fps], [0, 0.976], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: (t) => 1 - Math.pow(1 - t, 3),
-  });
-  const labels = useAppear(3.7 * fps);
+  const message = useCue(1);
+  const result = useCue(2);
+  const takeaway = useCue(3);
+  const word1 = useAppear(message + 0.4 * fps, 14);
+  const word2 = useAppear(message + 0.7 * fps, 14);
+  const barIn = useAppear(result);
+  const fill = interpolate(
+    frame,
+    [result + 0.2 * fps, result + 1.3 * fps],
+    [0, 0.976],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: (t) => 1 - Math.pow(1 - t, 3),
+    },
+  );
+  const labels = useAppear(result + 1.1 * fps);
 
   return (
     <Scene label="3 · Naïve Bayes" title="Muchas pistas, una por una">
@@ -96,14 +105,14 @@ export const Scene07NaiveBayes: React.FC = () => {
           </LitCard>
           <div style={{ display: "flex", flexDirection: "column", gap: 34 }}>
             <Row
-              delay={1.3 * fps}
+              delay={message + 1.2 * fps}
               label="Spam"
               calc="0,30 × 0,80 × 0,60"
               result="0,1440"
               color={colors.accent}
             />
             <Row
-              delay={1.8 * fps}
+              delay={message + 1.8 * fps}
               label="No spam"
               calc="0,70 × 0,10 × 0,05"
               result="0,0035"
@@ -151,7 +160,7 @@ export const Scene07NaiveBayes: React.FC = () => {
       </Middle>
       <Takeaway
         text="Es «ingenuo» porque supone que las pistas no dependen entre sí"
-        delay={4 * fps}
+        delay={takeaway}
       />
     </Scene>
   );

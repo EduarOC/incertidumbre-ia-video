@@ -1,5 +1,6 @@
 import React from "react";
 import { useVideoConfig } from "remotion";
+import { useCue } from "../components/Cues";
 import { Scene } from "../components/Scene";
 import { LitCard, Middle, Takeaway, useAppear } from "../components/ui";
 import { colors, fonts } from "../theme";
@@ -55,7 +56,10 @@ const Conditional: React.FC<{
 
 export const Scene06Order: React.FC = () => {
   const { fps } = useVideoConfig();
-  const neq = useAppear(1.8 * fps, 11);
+  const first = useCue(1);
+  const second = useCue(2);
+  const neq = useAppear(second + 1.2 * fps, 11);
+  const takeaway = useCue(3);
 
   return (
     <Scene
@@ -65,7 +69,7 @@ export const Scene06Order: React.FC = () => {
       <Middle>
         <div style={{ display: "flex", alignItems: "center", gap: 30 }}>
           <Conditional
-            delay={0.4 * fps}
+            delay={first}
             accent={colors.primary}
             formula="P(«gratis» | spam)"
             value="80 %"
@@ -87,7 +91,7 @@ export const Scene06Order: React.FC = () => {
             ≠
           </div>
           <Conditional
-            delay={1 * fps}
+            delay={second}
             accent={colors.accent}
             formula="P(spam | «gratis»)"
             value="77,4 %"
@@ -97,7 +101,7 @@ export const Scene06Order: React.FC = () => {
       </Middle>
       <Takeaway
         text="El orden importa: Bayes es la forma correcta de darle la vuelta a la pregunta"
-        delay={3.4 * fps}
+        delay={takeaway}
       />
     </Scene>
   );

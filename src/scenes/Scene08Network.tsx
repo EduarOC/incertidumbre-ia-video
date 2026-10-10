@@ -5,6 +5,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { useCue } from "../components/Cues";
 import { Scene } from "../components/Scene";
 import { Middle, Takeaway, useAppear, useRamp } from "../components/ui";
 import { colors, fmt, fonts } from "../theme";
@@ -109,11 +110,14 @@ export const Scene08Network: React.FC = () => {
   const sprinkler = useAppear(0.45 * fps, 14);
   const grass = useAppear(0.7 * fps, 14);
   const arrows = useRamp(1 * fps, 1.7 * fps);
-  const panel = useAppear(1 * fps);
+  const panel = useAppear(useCue(1));
+  const takeaway = useCue(4);
+  const wet = useCue(2) + 0.5 * fps;
+  const sprinklerOn = useCue(3) + 0.6 * fps;
 
   // Paso 1: se observa el pasto mojado. Paso 2: el aspersor estaba encendido.
-  const t1 = [2.6 * fps, 3.6 * fps];
-  const t2 = [4.8 * fps, 5.8 * fps];
+  const t1 = [wet, wet + 1 * fps];
+  const t2 = [sprinklerOn, sprinklerOn + 1 * fps];
   const value =
     frame < t2[0]
       ? interpolate(frame, t1, [20, 45.7], clamp)
@@ -213,7 +217,7 @@ export const Scene08Network: React.FC = () => {
       </Middle>
       <Takeaway
         text="Otra explicación hace menos necesaria la lluvia"
-        delay={6.3 * fps}
+        delay={takeaway}
       />
     </Scene>
   );

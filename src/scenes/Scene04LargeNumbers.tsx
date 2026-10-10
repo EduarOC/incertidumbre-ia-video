@@ -6,6 +6,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { useCue, useCueEnd } from "../components/Cues";
 import { Scene } from "../components/Scene";
 import { Middle, Takeaway } from "../components/ui";
 import { colors, fmt, fonts } from "../theme";
@@ -38,8 +39,11 @@ const formatCount = (n: number) =>
 export const Scene04LargeNumbers: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const drawStart = useCue(0) + 0.5 * fps;
+  const drawEnd = useCueEnd(1);
+  const takeaway = useCue(2);
   const n = Math.round(
-    interpolate(frame, [0.5 * fps, 4 * fps], [1, TOSSES], {
+    interpolate(frame, [drawStart, drawEnd], [1, TOSSES], {
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
       easing: Easing.inOut(Easing.cubic),
@@ -200,7 +204,7 @@ export const Scene04LargeNumbers: React.FC = () => {
       </Middle>
       <Takeaway
         text="Por eso una IA entrenada con pocos datos se equivoca más"
-        delay={3.9 * fps}
+        delay={takeaway}
       />
     </Scene>
   );

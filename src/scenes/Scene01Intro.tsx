@@ -43,6 +43,27 @@ const Link: React.FC<{ x: number; y: number; i: number }> = ({ x, y, i }) => {
   );
 };
 
+// Pulso de datos que viaja de un nodo al centro y se repite.
+const Pulse: React.FC<{ x: number; y: number; i: number }> = ({ x, y, i }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const start = 34 + i * 6;
+  if (frame < start) {
+    return null;
+  }
+  const period = 1.4 * fps;
+  const t = ((frame - start + i * 9) % period) / period;
+  return (
+    <circle
+      cx={x + (CENTER.x - x) * t}
+      cy={y + (CENTER.y - y) * t}
+      r={8}
+      fill={NODES[i].color}
+      opacity={Math.sin(t * Math.PI)}
+    />
+  );
+};
+
 export const Scene01Intro: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -61,6 +82,9 @@ export const Scene01Intro: React.FC = () => {
           <svg width={1920} height={1080}>
             {NODES.map((n, i) => (
               <Link key={i} x={n.x} y={n.y} i={i} />
+            ))}
+            {NODES.map((n, i) => (
+              <Pulse key={i} x={n.x} y={n.y} i={i} />
             ))}
             {NODES.map((n, i) => (
               <Node key={i} x={n.x} y={n.y} color={n.color} i={i} />

@@ -1,5 +1,5 @@
 import React from "react";
-import { useVideoConfig } from "remotion";
+import { useCue } from "../components/Cues";
 import { Scene } from "../components/Scene";
 import { Middle, useAppear, useRamp } from "../components/ui";
 import { colors } from "../theme";
@@ -74,8 +74,8 @@ const SummaryRow: React.FC<{
 };
 
 export const Scene09Summary: React.FC = () => {
-  const { fps } = useVideoConfig();
-  const line = useRamp(0.2 * fps, 4 * fps);
+  const rows = [useCue(1), useCue(2), useCue(3), useCue(4)];
+  const line = useRamp(rows[0], rows[3]);
 
   return (
     <Scene label="Cuadro comparativo" title="Cuatro ideas, una forma de pensar">
@@ -93,25 +93,25 @@ export const Scene09Summary: React.FC = () => {
             }}
           />
           <SummaryRow
-            delay={0.4 * fps}
+            delay={rows[0]}
             color={colors.primary}
             name="Probabilidad"
             question="¿Qué tan posible es que ocurra algo?"
           />
           <SummaryRow
-            delay={1.6 * fps}
+            delay={rows[1]}
             color={colors.teal}
             name="Teorema de Bayes"
             question="¿Cuánto cambia mi creencia al ver una pista?"
           />
           <SummaryRow
-            delay={2.8 * fps}
+            delay={rows[2]}
             color={colors.orange}
             name="Naïve Bayes"
             question="¿A qué clase pertenece algo con varias pistas?"
           />
           <SummaryRow
-            delay={4 * fps}
+            delay={rows[3]}
             color={colors.accent}
             name="Red bayesiana"
             question="¿Cómo se relacionan muchas causas y efectos?"
