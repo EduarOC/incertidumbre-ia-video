@@ -1,12 +1,14 @@
 {
   "name": "incertidumbre-ia-video",
   "version": "1.0.0",
-  "description": "My Remotion video",
+  "description": "Video educativo: Incertidumbre en Inteligencia Artificial",
   "repository": {},
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
     "@remotion/cli": "4.0.534",
+    "@remotion/fonts": "4.0.534",
+    "@remotion/media": "4.0.534",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "remotion": "4.0.534"
@@ -23,6 +25,8 @@
     "dev": "remotion studio",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "render": "remotion render IncertidumbreIA out/incertidumbre-ia.mp4",
+    "audio": "ffmpeg -y -i audio/fuente.mp4 -vn -c:a libmp3lame -q:a 2 audio/musica.mp3 && cp audio/musica.mp3 public/musica.mp3"
   }
 }
